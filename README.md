@@ -13,7 +13,7 @@ The API is a superset of the original `sudo` crate, so you can use it as a drop-
 
 The original `sudo` crate can be found on [GitLab](https://gitlab.com/dns2utf8/sudo.rs) ([crates.io](https://crates.io/crates/sudo)).
 
-[![crates.io](https://img.shields.io/crates/v/karen?logo=rust)](https://crates.io/crates/sudo/)
+[![crates.io](https://img.shields.io/crates/v/karen?logo=rust)](https://crates.io/crates/karen/)
 [![docs.rs](https://docs.rs/karen/badge.svg)](https://docs.rs/karen)
 
 Detect if you are running as root, restart self with `sudo` if needed or setup uid zero when running with the SUID flag set.
