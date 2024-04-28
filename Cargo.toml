@@ -12,7 +12,7 @@ authors = [
 license = "MIT OR Apache-2.0"
 edition = "2021"
 
-keywords = ["root", "suid", "sudo", "pkexec", "polkit", "doas", "privileges", "security", "system", "admin"]
+keywords = ["suid", "sudo", "pkexec", "polkit", "doas"]
 
 
 repository = "https://github.com/FyraLabs/karen"
