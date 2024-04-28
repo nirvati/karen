@@ -1,44 +1,47 @@
 # Changelog
 
-## unreleased
+## 0.1.0 - karen release
 
-* Update dev deps
+- Rename the crate to `karen`
+- Add `polkit` and `doas` functions
+- Major code refactor, everything is now in the `Elevate` builder struct
+- Add ability to specify a custom wrapper other than `sudo`
 
-## 0.6.0
+## sudo 0.6.0
 
-* Use full path for the `sudo` command while escalating
+- Use full path for the `sudo` command while escalating
 
-## 0.5.0
+## sudo 0.5.0
 
-* Add API for keeping environment variables with a certain prefixes
-* Make matching RUST_BACKTRACE case-in-sensitive
-* Return the previous environment when escalating from SUID
-* More documentation improvements
+- Add API for keeping environment variables with a certain prefixes
+- Make matching RUST_BACKTRACE case-in-sensitive
+- Return the previous environment when escalating from SUID
+- More documentation improvements
 
-## 0.4.0
+## sudo 0.4.0
 
-* Propagate RUST_BACKTRACE environment variable
-* Add example `backtrace.rs`
-* Build examples with CI too
+- Propagate RUST_BACKTRACE environment variable
+- Add example `backtrace.rs`
+- Build examples with CI too
 
-## 0.3.1
+## sudo 0.3.1
 
-* Multiple documentation fixes
+- Multiple documentation fixes
 
-## 0.3.0
+## sudo 0.3.0
 
-* Handle SUID binaries
-* Add example `suid.rs`
+- Handle SUID binaries
+- Add example `suid.rs`
 
-## 0.2.1
+## sudo 0.2.1
 
-* Fix documentation
+- Fix documentation
 
-## 0.2.0
+## sudo 0.2.0
 
-* First public release
-* Taking over the crate name `sudo` from Vincenzo Tilotta
+- First public release
+- Taking over the crate name `sudo` from Vincenzo Tilotta
 
-## 0.1.3 and 0.0.0
+## sudo 0.1.3 and 0.0.0
 
-* Name squatted by Vincenzo Tilotta
+- Name squatted by Vincenzo Tilotta
