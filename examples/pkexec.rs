@@ -1,25 +1,19 @@
-#[macro_use]
-extern crate log;
-extern crate simple_logger;
+use log::info;
 
-use std::error::Error;
-
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() {
     simple_logger::SimpleLogger::new()
         .init()
         .expect("unable to initialize logger");
 
     uid_euid("①");
 
-    spawn("export");
+    spawn("/usr/bin/id");
 
-    karen::with_env(&["EXAMPLE_", "CARGO"])?;
+    karen::pkexec().expect("pkexec failed");
 
     uid_euid("②");
 
-    spawn("export");
-
-    Ok(())
+    spawn("/usr/bin/id");
 }
 
 fn uid_euid(nth: &str) {
@@ -29,12 +23,9 @@ fn uid_euid(nth: &str) {
 }
 
 fn spawn(cmd: &str) {
-    let mut child = std::process::Command::new("/usr/bin/env")
-        .args(&["bash", "-c", cmd])
+    let mut child = std::process::Command::new(cmd)
         .spawn()
         .expect("unable to start child");
 
     let _ecode = child.wait().expect("failed to wait on child");
-
-    println!("\n\n\n\n\n\n");
 }

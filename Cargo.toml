@@ -1,23 +1,28 @@
 [package]
-name = "elevate"
-description = "Detect if you are running as root, restart self with sudo if needed or setup uid zero when running with the SUID flag set."
-version = "0.6.1"
-authors = ["Stefan Schindler <dns2utf8@estada.ch>", "Alexandria P"]
-license = "MIT/Apache-2.0"
+name = "karen"
+summary = "Speak to the manager! Restart your current process with elevated privileges if needed."
+description = "Detect if you are running as root, restart self with sudo or any other wrapper if needed or setup uid zero when running with the SUID flag set."
+
+version = "0.1.0"
+authors = [
+    "Stefan Schindler <dns2utf8@estada.ch>",
+    "Alexandria P",
+    "Cappy Ishihara <cappy@fyralabs.com>",
+]
+license = "MIT OR Apache-2.0"
 edition = "2021"
 
-repository = "https://github.com/alxpettit/elevate"
+keywords = ["root", "suid", "sudo", "pkexec", "polkit", "doas", "privileges", "security", "system", "admin"]
+
+
+repository = "https://github.com/FyraLabs/karen"
 readme = "README.md"
-include = [
-    "README.md",
-    "LICENSE",
-    "src/**",
-]
+include = ["README.md", "LICENSE", "src/**"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-log = "0.4.18"
-libc = "0.2.144"
+log = "~0.4"
+libc = "~0.2"
 
 [dev-dependencies]
-simple_logger = "1.8"
+simple_logger = ">=4"

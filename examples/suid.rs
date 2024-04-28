@@ -11,7 +11,7 @@ fn main() {
 
     spawn("/usr/bin/id");
 
-    sudo::escalate_if_needed().expect("sudo failed");
+    karen::escalate_if_needed().expect("sudo failed");
 
     uid_euid("②");
 
