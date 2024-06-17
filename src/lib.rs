@@ -97,6 +97,10 @@ impl Escalate {
         }
         let mut command: Command = Command::new(&self.wrapper);
 
+        if self.wrapper == "pkexec" {
+            command.arg("env");
+        }
+
         // Always propagate RUST_BACKTRACE
         if let Ok(trace) = std::env::var("RUST_BACKTRACE") {
             let value = match &*trace.to_lowercase() {
@@ -122,7 +126,9 @@ impl Escalate {
             for (name, value) in std::env::vars().filter(|(name, _)| name != "RUST_BACKTRACE") {
                 if prefixes.iter().any(|prefix| name.starts_with(prefix)) {
                     trace!("propagating {}={}", name, value);
-                    // command.arg(format!("{}={}", name, value));
+                    if self.wrapper == "pkexec" {
+                        command.arg(format!("{}={}", name, value));
+                    }
                     command.env(name, value);
                 }
             }
