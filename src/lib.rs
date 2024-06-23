@@ -97,10 +97,6 @@ impl Escalate {
         }
         let mut command: Command = Command::new(&self.wrapper);
 
-        if self.wrapper == "pkexec" {
-            command.arg("env");
-        }
-
         // Always propagate RUST_BACKTRACE
         if let Ok(trace) = std::env::var("RUST_BACKTRACE") {
             let value = match &*trace.to_lowercase() {
@@ -122,7 +118,12 @@ impl Escalate {
             }
         }
 
-        if prefixes.is_empty() == false {
+        if !prefixes.is_empty() {
+            // Only add env for pkexec if we're passing any additional env vars
+            if self.wrapper == "pkexec" {
+                trace!("Prefixing `env` to pkexec command to pass additional environment variables! This may break pkexec system policies.");
+                command.arg("env");
+            }
             for (name, value) in std::env::vars().filter(|(name, _)| name != "RUST_BACKTRACE") {
                 if prefixes.iter().any(|prefix| name.starts_with(prefix)) {
                     trace!("propagating {}={}", name, value);
