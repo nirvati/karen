@@ -95,6 +95,9 @@ impl Escalate {
         {
             args[0] = absolute_path;
         }
+        if let Some(appimage) = std::env::var("APPIMAGE").ok() {
+            args[0] = appimage;
+        }
         let mut command: Command = Command::new(&self.wrapper);
 
         // Always propagate RUST_BACKTRACE
